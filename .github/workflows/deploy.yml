@@ -1,0 +1,24 @@
+name: Deploy to S3
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout source
+      uses: actions/checkout@v4
+
+    - name: Deploy to S3
+      uses: jakejarvis/s3-sync-action@master
+      with:
+        args: --delete --acl public-read
+      env:
+        AWS_S3_BUCKET: elevatelab
+        AWS_REGION: eu-north-1
+        AWS_ACCESS_KEY_ID: ${{ AKIA42KNQJYQHTOFF456 }}
+        AWS_SECRET_ACCESS_KEY: ${{ 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 }}
+
